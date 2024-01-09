@@ -15,13 +15,13 @@ app.get('/', (req, res) => {
 async function getRandomSongDetails(req, res) {
     try {
         // Fetch random song URL
-        const songResponse = await axios.get('http://localhost:8080/api/v1/music/random');
+        const songResponse = await axios.get('http://srv-captain--backend:8080/api/v1/music/random');
         const songUrl = songResponse.data;
 
 
         // Fetch artwork and stream URLs for the song
-        const artworkResponse = await axios.get(`http://localhost:8080/api/v1/music/artwork?url=${songUrl}`);
-        const streamResponse = await axios.get(`http://localhost:8080/api/v1/music/stream?url=${songUrl}`);
+        const artworkResponse = await axios.get(`http://srv-captain--backend:8080/api/v1/music/artwork?url=${songUrl}`);
+        const streamResponse = await axios.get(`http://srv-captain--backend:8080/api/v1/music/stream?url=${songUrl}`);
 
         console.log("Song URL:", songUrl);
         console.log("Artwork URL:", artworkResponse.data);
