@@ -38,8 +38,40 @@ $(document).ready(function() {
         });
     }
 
-// Call the function to fetch song details
+
+    // Get the audio player element
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    // Add an event listener for the 'ended' event
+    audioPlayer.addEventListener('ended', function() {
+        console.log('Song ended. Fetching new song...');
+        fetchNewSong(); // Call the function to fetch a new song
+    });
+
+    audioPlayer.addEventListener('error', function(e) {
+        console.error('Audio playback error:', e);
+    });
+
+    audioPlayer.addEventListener('stalled', function() {
+        console.log('Audio playback stalled');
+    });
+
+    audioPlayer.addEventListener('waiting', function() {
+        console.log('Waiting for audio data...');
+    });
+
+    audioPlayer.addEventListener('suspend', function() {
+        console.log('Audio playback suspended');
+    });
+    // Call the function to fetch song details
     fetchSongDetails();
 
 });
+
+
+
+
+
+
+
 
